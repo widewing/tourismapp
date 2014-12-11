@@ -44,6 +44,9 @@ public class Location {
 	}
 
 	public Coord getCoord() {
+		if (coord == null) {
+			coord = new Coord(latitude, longitude);
+		}
 		return coord;
 	}
 
@@ -77,12 +80,12 @@ public class Location {
 		return imageUrl;
 	}
 
-	@Column(name = "latitude", length = 255)
+	@Column(name = "latitude", precision = 10, scale = 6)
 	public double getLatitude() {
 		return latitude;
 	}
 
-	@Column(name = "longitude", length = 255)
+	@Column(name = "longitude", precision = 10, scale = 6)
 	public double getLongitude() {
 		return longitude;
 	}
