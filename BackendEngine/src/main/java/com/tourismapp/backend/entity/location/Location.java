@@ -1,5 +1,6 @@
 package com.tourismapp.backend.entity.location;
 
+import java.util.Collections;
 import java.util.HashSet;
 
 import javax.persistence.Column;
@@ -7,7 +8,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.springframework.util.StringUtils;
 
 import com.tourismapp.backend.entity.Coord;
 
@@ -18,12 +24,13 @@ public class Location {
 	private Location belongTo;
 	private Coord coord;
 	private String description;
-	private String id;
+	private Integer id;
 	private String imageUrl;
 	private double latitude;
 	private double longitude;
 	private String name;
 	private HashSet<String> tags;
+	private String tagString;
 
 	@Override
 	public boolean equals(Object e) {
@@ -38,11 +45,13 @@ public class Location {
 		return baiduCode;
 	}
 
-	@Column(name = "belong_to", unique = true, precision = 10, scale = 0)
+	@ManyToOne
+	@JoinColumn(name = "belong_to")
 	public Location getBelongTo() {
 		return belongTo;
 	}
 
+	@Transient
 	public Coord getCoord() {
 		if (coord == null) {
 			coord = new Coord(latitude, longitude);
@@ -55,6 +64,7 @@ public class Location {
 		return description;
 	}
 
+	@Transient
 	public District getDistrict() {
 		Location cur = this;
 		while (true) {
@@ -71,7 +81,7 @@ public class Location {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false, precision = 10, scale = 0)
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
@@ -95,8 +105,17 @@ public class Location {
 		return name;
 	}
 
+	@Transient
 	public HashSet<String> getTags() {
+		if (tags == null && StringUtils.isEmpty(tagString)) {
+			Collections.addAll(tags, tagString.split(","));
+		}
 		return tags;
+	}
+
+	@Column(name = "tags", length = 255)
+	public String getTagString() {
+		return tagString;
 	}
 
 	public void setBaiduCode(String baiduCode) {
@@ -109,13 +128,15 @@ public class Location {
 
 	public void setCoord(Coord coord) {
 		this.coord = coord;
+		latitude = coord.getLatitude();
+		longitude = coord.getLongitude();
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -137,5 +158,14 @@ public class Location {
 
 	public void setTags(HashSet<String> tags) {
 		this.tags = tags;
+		StringBuffer temp = new StringBuffer();
+		for (String string : tags) {
+			temp.append(string).append(',');
+		}
+		tagString = temp.toString();
+	}
+
+	public void setTagString(String tagString) {
+		this.tagString = tagString;
 	}
 }
