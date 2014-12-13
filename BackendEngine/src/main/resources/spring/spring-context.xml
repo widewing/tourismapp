@@ -15,6 +15,8 @@
           http://www.springframework.org/schema/data/jpa
           http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
+	<context:property-placeholder location="classpath:back-end.properties" />
+	
 	<context:annotation-config />
 
 	<!--tomcat jdbc pool数据源配置 -->
@@ -57,7 +59,7 @@
 				<prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl.auto}</prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</prop>
 				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-				<prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
+				<prop key="hibernate.format_sql">${hibernate.fromat_sql}</prop>
 
 
 			</props>
@@ -78,7 +80,7 @@
 
 	<!-- 配置Spring Data JPA扫描目录 -->
 	<jpa:repositories base-package="com.tourismapp.backend.dao" />
-	
+
 	<context:component-scan base-package="com.tourismapp.backend.service" />
 
 

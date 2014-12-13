@@ -2,8 +2,10 @@ package com.tourismapp.backend.dao;
 
 import java.io.Serializable;
 
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 
+@NoRepositoryBean
 public interface BaseDao<T, ID extends Serializable> extends Repository<T, ID> {
 	/**
 	 * Returns the number of entities available.
