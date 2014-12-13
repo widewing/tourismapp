@@ -26,7 +26,7 @@ public class Activity {
 	private String name;
 	private List<Location> spots;
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(joinColumns = { @JoinColumn(name = "activity_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "location_id", referencedColumnName = "id") })
 	public List<Location> getCities() {
 		return cities;
@@ -54,7 +54,7 @@ public class Activity {
 		return name;
 	}
 
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(joinColumns = { @JoinColumn(name = "activity_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "location_id", referencedColumnName = "id") })
 	public List<Location> getSpots() {
 		return spots;
