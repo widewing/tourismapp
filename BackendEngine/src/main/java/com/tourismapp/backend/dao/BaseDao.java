@@ -34,6 +34,11 @@ public interface BaseDao<T, ID extends Serializable> extends Repository<T, ID> {
 	void delete(T entity);
 
 	/**
+	 * Deletes all entities managed by the repository.
+	 */
+	void deleteAll();
+
+	/**
 	 * Retrieves an entity by its id.
 	 *
 	 * @param id
