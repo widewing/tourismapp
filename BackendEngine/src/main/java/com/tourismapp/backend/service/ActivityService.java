@@ -20,7 +20,7 @@ public class ActivityService {
 	@Transactional(readOnly = true)
 	public Map<String, List<Activity>> listAllActivitiesGroupByTag() {
 		Map<String, List<Activity>> result = new HashMap<>();
-		List<Activity> activities = activityDao.findAll();
+		List<Activity> activities = activityDao.findByTodayActivities();
 		for (Activity activity : activities) {
 			List<Activity> tagActivities = result.get(activity.getTag());
 			if (null == tagActivities) {

@@ -1,5 +1,6 @@
 package com.tourismapp.backend.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -13,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.tourismapp.backend.entity.location.Location;
 
@@ -21,10 +24,13 @@ import com.tourismapp.backend.entity.location.Location;
 public class Activity {
 	private List<Location> cities;
 	private String description;
+	private Date endDate;
 	private Integer id;
 	private String imageUrl;
 	private String name;
 	private List<Location> spots;
+	private Date startDate;
+
 	private String tag;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -36,6 +42,12 @@ public class Activity {
 	@Column(name = "description", length = 255)
 	public String getDescription() {
 		return description;
+	}
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "endDate")
+	public Date getEndDate() {
+		return endDate;
 	}
 
 	@Id
@@ -61,6 +73,12 @@ public class Activity {
 		return spots;
 	}
 
+	@Temporal(TemporalType.DATE)
+	@Column(name = "startDate")
+	public Date getStartDate() {
+		return startDate;
+	}
+
 	@Column(name = "tag", length = 20)
 	public String getTag() {
 		return tag;
@@ -72,6 +90,10 @@ public class Activity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public void setId(Integer id) {
@@ -88,6 +110,10 @@ public class Activity {
 
 	public void setSpots(List<Location> spots) {
 		this.spots = spots;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
 	}
 
 	public void setTag(String tag) {

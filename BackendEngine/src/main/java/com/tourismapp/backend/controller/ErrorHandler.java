@@ -1,5 +1,6 @@
 package com.tourismapp.backend.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,6 +14,8 @@ public class ErrorHandler {
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ResponseBody
 	public ErrorResponse errorResponse(Exception exception) {
+		Logger logger = Logger.getLogger(ErrorHandler.class);
+		logger.error("Exception:", exception);
 		return new ErrorResponse(exception.getMessage());
 	}
 }
