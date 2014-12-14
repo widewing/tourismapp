@@ -23,12 +23,15 @@ public class ActivityDaoTest {
 		activityDao.deleteAll();
 		Activity a1 = new Activity();
 		a1.setName("test1");
+		a1.setTag("tag1");
 		activityDao.save(a1);
 		Activity a2 = new Activity();
 		a2.setName("test2");
+		a2.setTag("tag1");
 		activityDao.save(a2);
 		Activity a3 = new Activity();
 		a3.setName("test3");
+		a3.setTag("tag2");
 		activityDao.save(a3);
 	}
 

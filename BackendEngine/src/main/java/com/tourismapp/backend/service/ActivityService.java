@@ -1,6 +1,9 @@
 package com.tourismapp.backend.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +18,17 @@ public class ActivityService {
 	private ActivityDao activityDao;
 
 	@Transactional(readOnly = true)
-	public List<Activity> listAll() {
-		return activityDao.findAll();
+	public Map<String, List<Activity>> listAllActivitiesGroupByTag() {
+		Map<String, List<Activity>> result = new HashMap<>();
+		List<Activity> activities = activityDao.findAll();
+		for (Activity activity : activities) {
+			List<Activity> tagActivities = result.get(activity.getTag());
+			if (null == tagActivities) {
+				tagActivities = new ArrayList<>();
+			}
+			tagActivities.add(activity);
+			result.put(activity.getTag(), tagActivities);
+		}
+		return result;
 	}
-
 }
