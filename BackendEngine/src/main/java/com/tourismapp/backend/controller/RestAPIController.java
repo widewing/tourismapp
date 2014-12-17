@@ -1,6 +1,7 @@
 package com.tourismapp.backend.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class RestAPIController {
 	@RequestMapping(value = "activities", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public List<Activity> listAllActivities() {
-		return activityService.listAll();
+	public Map<String, List<Activity>> listAllActivitiesGroupByTag() {
+		return activityService.listAllActivitiesGroupByTag();
 	}
 }
