@@ -78,9 +78,9 @@ public class Session {
 		return districts;
 	}
 	private List<District> calcDistrictVisitOrder(Map<District,Collection<Scenery>> groups){
-		Map<District,Integer> visitDays = calcEstimatedDaysForDistricts(groups);
+		// Map<District,Integer> visitDays = calcEstimatedDaysForDistricts(groups);
 		// TODO
-		return null;
+		return new ArrayList<District>(groups.keySet());
 	}
 	private Map<District,Integer> calcEstimatedDaysForDistricts(Map<District,Collection<Scenery>> groups){
 		Map<District,Integer> result = new HashMap<District,Integer>();
