@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 import com.tourismapp.backend.entity.location.Location;
 
 @Entity
-@Table(name = "Activity")
+@Table(name = "activity")
 public class Activity {
 	private List<Location> cities;
 	private String description;
