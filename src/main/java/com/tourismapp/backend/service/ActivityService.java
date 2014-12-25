@@ -19,12 +19,12 @@ public class ActivityService {
 
 	@Transactional(readOnly = true)
 	public Map<String, List<Activity>> listAllActivitiesGroupByTag() {
-		Map<String, List<Activity>> result = new HashMap<>();
+		Map<String, List<Activity>> result = new HashMap<String, List<Activity>>();
 		List<Activity> activities = activityDao.findByTodayActivities();
 		for (Activity activity : activities) {
 			List<Activity> tagActivities = result.get(activity.getTag());
 			if (null == tagActivities) {
-				tagActivities = new ArrayList<>();
+				tagActivities = new ArrayList<Activity>();
 			}
 			tagActivities.add(activity);
 			result.put(activity.getTag(), tagActivities);
