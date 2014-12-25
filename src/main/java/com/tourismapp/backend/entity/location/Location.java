@@ -2,6 +2,7 @@ package com.tourismapp.backend.entity.location;
 
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,13 +30,14 @@ public class Location {
 	private double latitude;
 	private double longitude;
 	private String name;
-	private HashSet<String> tags;
+	private Set<String> tags = new HashSet<String>();
 	private String tagString;
 
 	@Override
 	public boolean equals(Object e) {
-		if (!(e instanceof Location))
+		if (!(e instanceof Location)) {
 			return false;
+		}
 		return id == null ? false : id.equals(((Location) e).id);
 	}
 
@@ -52,8 +54,9 @@ public class Location {
 
 	@Transient
 	public Coord getCoord() {
-		if (coord == null)
+		if (coord == null) {
 			coord = new Coord(latitude, longitude);
+		}
 		return coord;
 	}
 
@@ -66,10 +69,12 @@ public class Location {
 	public District getDistrict() {
 		Location cur = this;
 		while (true) {
-			if (cur == null)
+			if (cur == null) {
 				return null;
-			if (cur instanceof District)
+			}
+			if (cur instanceof District) {
 				return (District) cur;
+			}
 			cur = cur.belongTo;
 		}
 	}
@@ -102,9 +107,10 @@ public class Location {
 	}
 
 	@Transient
-	public HashSet<String> getTags() {
-		if (tags == null && StringUtils.isEmpty(tagString))
+	public Set<String> getTags() {
+		if (tags == null && !StringUtils.isEmpty(tagString)) {
 			Collections.addAll(tags, tagString.split(","));
+		}
 		return tags;
 	}
 
@@ -154,8 +160,9 @@ public class Location {
 	public void setTags(HashSet<String> tags) {
 		this.tags = tags;
 		StringBuffer temp = new StringBuffer();
-		for (String string : tags)
+		for (String string : tags) {
 			temp.append(string).append(',');
+		}
 		tagString = temp.toString();
 	}
 
