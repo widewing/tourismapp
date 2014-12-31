@@ -1,4 +1,4 @@
-package com.tourismapp.backend.data;
+package com.tourismapp.backend.service;
 
 import java.util.Collection;
 import java.util.Date;
@@ -6,7 +6,7 @@ import java.util.Date;
 import com.tourismapp.backend.entity.Coord;
 import com.tourismapp.backend.entity.location.Hotel;
 
-public class HotelData {
+public class HotelDataService {
 	public Collection<Hotel> getAvailableHotels(Coord coord,int radius,Date time){
 		return null;
 	}

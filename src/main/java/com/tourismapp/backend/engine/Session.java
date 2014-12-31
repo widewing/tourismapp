@@ -13,9 +13,6 @@ import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Set;
 
-import com.tourismapp.backend.data.HotelData;
-import com.tourismapp.backend.data.RestaurantData;
-import com.tourismapp.backend.data.Transportation;
 import com.tourismapp.backend.entity.Coord;
 import com.tourismapp.backend.entity.location.District;
 import com.tourismapp.backend.entity.location.Hotel;
@@ -28,18 +25,21 @@ import com.tourismapp.backend.entity.route.StaySection;
 import com.tourismapp.backend.entity.route.TransportSection;
 import com.tourismapp.backend.entity.transport.ScheduledTransport;
 import com.tourismapp.backend.entity.transport.Transport;
+import com.tourismapp.backend.service.HotelDataService;
+import com.tourismapp.backend.service.RestaurantDataService;
+import com.tourismapp.backend.service.TransportationDataService;
 
 public class Session {
 	Date endDate;
 	Location endLocation;
-	HotelData hotelData = new HotelData();
+	HotelDataService hotelData = new HotelDataService();
 	Hotel lastNightHotel;
-	RestaurantData restaurantData = new RestaurantData();
+	RestaurantDataService restaurantData = new RestaurantDataService();
 	List<Scenery> selectedSceneries;
 	Date startDate;
 	Location startLocation;
 	HashSet<String> tags;
-	Transportation transportation = new Transportation();
+	TransportationDataService transportation = new TransportationDataService();
 	float visitTimeCoefficient;
 
 	List<Restaurant> wantedRestaurants;
