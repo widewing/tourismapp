@@ -1,10 +1,11 @@
-package com.tourismapp.backend.entity.location;
+package com.tourismapp.backend.dto.location;
 
 import java.util.Map;
 
-import javax.persistence.Table;
+import javax.persistence.Entity;
 
-public class Hotel extends BaseLocationEntity {
+@Entity
+public class HotelDto extends Location {
 	public static enum RoomType {
 		DELUXE, DOUBLE, KINGSIZE, OTHER, SINGLE, TRIPLE
 	};

@@ -17,25 +17,26 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.tourismapp.backend.entity.location.Location;
+import com.tourismapp.backend.entity.location.City;
+import com.tourismapp.backend.entity.location.Scenery;
 
 @Entity
 @Table(name = "activity")
 public class Activity {
-	private List<Location> cities;
+	private List<City> cities;
 	private String description;
 	private Date endDate;
 	private Integer id;
 	private String imageUrl;
 	private String name;
-	private List<Location> spots;
+	private List<Scenery> sceneries;
 	private Date startDate;
 
 	private String tag;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(joinColumns = { @JoinColumn(name = "activity_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "location_id", referencedColumnName = "id") })
-	public List<Location> getCities() {
+	@JoinTable(joinColumns = { @JoinColumn(name = "activity_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "city_id", referencedColumnName = "id") })
+	public List<City> getCities() {
 		return cities;
 	}
 
@@ -68,9 +69,9 @@ public class Activity {
 	}
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinTable(joinColumns = { @JoinColumn(name = "activity_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "location_id", referencedColumnName = "id") })
-	public List<Location> getSpots() {
-		return spots;
+	@JoinTable(joinColumns = { @JoinColumn(name = "activity_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "scenery_id", referencedColumnName = "id") })
+	public List<Scenery> getSceneries() {
+		return sceneries;
 	}
 
 	@Temporal(TemporalType.DATE)
@@ -84,7 +85,7 @@ public class Activity {
 		return tag;
 	}
 
-	public void setCities(List<Location> cities) {
+	public void setCities(List<City> cities) {
 		this.cities = cities;
 	}
 
@@ -108,8 +109,8 @@ public class Activity {
 		this.name = name;
 	}
 
-	public void setSpots(List<Location> spots) {
-		this.spots = spots;
+	public void setSceneries(List<Scenery> sceneries) {
+		this.sceneries = sceneries;
 	}
 
 	public void setStartDate(Date startDate) {

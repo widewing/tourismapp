@@ -1,12 +1,9 @@
-package com.tourismapp.backend.entity.transport;
+package com.tourismapp.backend.dto.transport;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
+import com.tourismapp.backend.dto.location.Location;
 
-import com.tourismapp.backend.entity.location.Location;
-
-@Entity
 public abstract class Transport {
 	public static enum Method {
 		Air, Bicycle, Bus, Other, Ship, Subway, Taxi, Train, Walk

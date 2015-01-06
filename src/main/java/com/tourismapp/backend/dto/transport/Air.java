@@ -1,4 +1,4 @@
-package com.tourismapp.backend.entity.transport;
+package com.tourismapp.backend.dto.transport;
 
 import com.tourismapp.backend.entity.location.TransitStation;
 

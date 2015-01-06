@@ -1,8 +1,9 @@
-package com.tourismapp.backend.entity.location;
+package com.tourismapp.backend.dto.location;
 
 import java.util.Collection;
 
-public class Restaurant extends BaseLocationEntity {
+//@Entity
+public class RestaurantDto extends Location {
 	int estimatedCost;
 	Collection<String> famousFoods;
 	int rank;

@@ -5,78 +5,45 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Transient;
 
 import org.springframework.util.StringUtils;
 
 import com.tourismapp.backend.entity.Coord;
 
-@Entity
-@Table(name = "location")
-public class Location {
-	private String baiduCode;
-	private Location belongTo;
-	private Coord coord;
-	private String description;
-	private Integer id;
-	private String imageUrl;
-	private double latitude;
-	private double longitude;
-	private String name;
-	private Set<String> tags = new HashSet<String>();
-	private String tagString;
+@MappedSuperclass
+public class BaseLocationEntity {
+	protected Coord coord;
+	protected String description;
+	protected Integer id;
+	protected String imageUrl;
+	protected double latitude;
+	protected double longitude;
+	protected String name;
+	protected Set<String> tags = new HashSet<String>();
+	protected String tagString;
 
 	@Override
 	public boolean equals(Object e) {
-		if (!(e instanceof Location)) {
+		if (!(e instanceof BaseLocationEntity))
 			return false;
-		}
-		return id == null ? false : id.equals(((Location) e).id);
-	}
-
-	@Column(name = "baidu_code", unique = true, nullable = false, length = 10)
-	public String getBaiduCode() {
-		return baiduCode;
-	}
-
-	@ManyToOne
-	@JoinColumn(name = "belong_to")
-	public Location getBelongTo() {
-		return belongTo;
+		return id == null ? false : id.equals(((BaseLocationEntity) e).id);
 	}
 
 	@Transient
 	public Coord getCoord() {
-		if (coord == null) {
+		if (coord == null)
 			coord = new Coord(latitude, longitude);
-		}
 		return coord;
 	}
 
 	@Column(name = "description", length = 255)
 	public String getDescription() {
 		return description;
-	}
-
-	@Transient
-	public District getDistrict() {
-		Location cur = this;
-		while (true) {
-			if (cur == null) {
-				return null;
-			}
-			if (cur instanceof District) {
-				return (District) cur;
-			}
-			cur = cur.belongTo;
-		}
 	}
 
 	@Id
@@ -108,23 +75,14 @@ public class Location {
 
 	@Transient
 	public Set<String> getTags() {
-		if (tags == null && !StringUtils.isEmpty(tagString)) {
+		if (tags == null && !StringUtils.isEmpty(tagString))
 			Collections.addAll(tags, tagString.split(","));
-		}
 		return tags;
 	}
 
 	@Column(name = "tags", length = 255)
 	public String getTagString() {
 		return tagString;
-	}
-
-	public void setBaiduCode(String baiduCode) {
-		this.baiduCode = baiduCode;
-	}
-
-	public void setBelongTo(Location belongTo) {
-		this.belongTo = belongTo;
 	}
 
 	public void setCoord(Coord coord) {
@@ -160,9 +118,8 @@ public class Location {
 	public void setTags(HashSet<String> tags) {
 		this.tags = tags;
 		StringBuffer temp = new StringBuffer();
-		for (String string : tags) {
+		for (String string : tags)
 			temp.append(string).append(',');
-		}
 		tagString = temp.toString();
 	}
 

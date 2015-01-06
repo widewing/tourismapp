@@ -1,4 +1,4 @@
-package com.tourismapp.backend.entity.route;
+package com.tourismapp.backend.dto.route;
 
 import java.util.List;
 

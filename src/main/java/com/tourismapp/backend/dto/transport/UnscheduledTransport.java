@@ -1,4 +1,4 @@
-package com.tourismapp.backend.entity.transport;
+package com.tourismapp.backend.dto.transport;
 
 import java.util.Calendar;
 import java.util.Date;
