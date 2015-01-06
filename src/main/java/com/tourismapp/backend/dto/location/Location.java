@@ -48,13 +48,13 @@ public class Location {
 		return description;
 	}
 
-	public DistrictDto getDistrict() {
+	public District getDistrict() {
 		Location cur = this;
 		while (true) {
 			if (cur == null)
 				return null;
-			if (cur instanceof DistrictDto)
-				return (DistrictDto) cur;
+			if (cur instanceof District)
+				return (District) cur;
 			cur = cur.belongTo;
 		}
 	}

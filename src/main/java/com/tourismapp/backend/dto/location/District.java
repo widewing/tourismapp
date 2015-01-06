@@ -1,6 +1,6 @@
 package com.tourismapp.backend.dto.location;
 
-public class DistrictDto extends Location{
+public class District extends Location{
 	public static enum Level {Country,Province,City,Town,Villege};
 	Level level;
 	public Level getLevel() {

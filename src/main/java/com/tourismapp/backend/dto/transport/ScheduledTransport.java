@@ -2,7 +2,7 @@ package com.tourismapp.backend.dto.transport;
 
 import java.util.Date;
 
-import com.tourismapp.backend.dto.location.DistrictDto;
+import com.tourismapp.backend.dto.location.District;
 import com.tourismapp.backend.dto.location.TransitStationDto;
 
 public class ScheduledTransport extends Transport {
@@ -10,15 +10,15 @@ public class ScheduledTransport extends Transport {
 	Date leaveTime;
 	protected TransitStationDto.Type stationType = TransitStationDto.Type.Other;
 
-	public DistrictDto getArriveDistrict() {
+	public District getArriveDistrict() {
 		if (!(arriveLocation instanceof TransitStationDto))
 			return null;
 		TransitStationDto station = (TransitStationDto) arriveLocation;
 		if (station.getTransitType() != stationType)
 			return null;
-		if (!(station.getBelongTo() instanceof DistrictDto))
+		if (!(station.getBelongTo() instanceof District))
 			return null;
-		return (DistrictDto) station.getBelongTo();
+		return (District) station.getBelongTo();
 	}
 
 	public Date getArriveTime() {
@@ -32,15 +32,15 @@ public class ScheduledTransport extends Transport {
 		return getArriveTime();
 	}
 
-	public DistrictDto getLeaveDistrict() {
+	public District getLeaveDistrict() {
 		if (!(leaveLocation instanceof TransitStationDto))
 			return null;
 		TransitStationDto station = (TransitStationDto) leaveLocation;
 		if (station.getTransitType() != stationType)
 			return null;
-		if (!(station.getBelongTo() instanceof DistrictDto))
+		if (!(station.getBelongTo() instanceof District))
 			return null;
-		return (DistrictDto) station.getBelongTo();
+		return (District) station.getBelongTo();
 	}
 
 	public Date getLeaveTime() {
