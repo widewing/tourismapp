@@ -10,6 +10,6 @@ public interface CityDao extends BaseDao<City, Integer> {
 	@Query("from City order by firstLetter")
 	public List<City> findAllOrderByFirstLetter();
 
-	@Query("from City where destinationStatus=true order by firstLetter")
-	public List<City> findByDestinationStatus();
+	@Query("from City where isDestination=true order by firstLetter")
+	public List<City> findByDeinationCities();
 }

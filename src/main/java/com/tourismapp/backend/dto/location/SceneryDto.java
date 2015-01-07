@@ -1,50 +1,68 @@
 package com.tourismapp.backend.dto.location;
 
-import java.util.Collection;
+import java.util.List;
+
+import org.springframework.beans.BeanUtils;
+
+import com.tourismapp.backend.entity.location.Scenery;
 
 public class SceneryDto extends Location {
-	int rank;
-	int visitMinutes;
-	float openTime;
-	float closeTime;
-	float price;
-	Collection<SceneryEntranceDto> entrances;
+	private float closeTime;
+	private float openTime;
+	private float price;
+	private int rank;
+	private int visitMinutes;
+
+	public SceneryDto() {
+		super();
+	}
+
+	public SceneryDto(Scenery entity) {
+		BeanUtils.copyProperties(entity, this);
+	}
+
+	public float getCloseTime() {
+		return closeTime;
+	}
+
+	public List<SceneryEntranceDto> getEntrances() {
+		return null;
+	}
+
+	public float getOpenTime() {
+		return openTime;
+	}
+
+	public float getPrice() {
+		return price;
+	}
 
 	public int getRank() {
 		return rank;
 	}
-	public void setRank(int rank) {
-		this.rank = rank;
-	}
+
 	public int getVisitMinutes() {
 		return visitMinutes;
 	}
-	public void setVisitMinutes(int visitMinutes) {
-		this.visitMinutes = visitMinutes;
-	}
-	public Collection<SceneryEntranceDto> getEntrances() {
-		return entrances;
-	}
-	public void setEntrances(Collection<SceneryEntranceDto> entrances) {
-		this.entrances = entrances;
-	}
-	public float getOpenTime() {
-		return openTime;
-	}
-	public void setOpenTime(float openTime) {
-		this.openTime = openTime;
-	}
-	public float getCloseTime() {
-		return closeTime;
-	}
+
 	public void setCloseTime(float closeTime) {
 		this.closeTime = closeTime;
 	}
-	public float getPrice() {
-		return price;
+
+	public void setOpenTime(float openTime) {
+		this.openTime = openTime;
 	}
+
 	public void setPrice(float price) {
 		this.price = price;
 	}
-	
+
+	public void setRank(int rank) {
+		this.rank = rank;
+	}
+
+	public void setVisitMinutes(int visitMinutes) {
+		this.visitMinutes = visitMinutes;
+	}
+
 }

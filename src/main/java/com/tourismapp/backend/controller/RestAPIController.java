@@ -11,19 +11,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.tourismapp.backend.entity.Activity;
+import com.tourismapp.backend.dto.ActivityDto;
+import com.tourismapp.backend.dto.location.CityDto;
 import com.tourismapp.backend.service.ActivityService;
+import com.tourismapp.backend.service.CityService;
 
 @Controller
 @RequestMapping("/api/")
 public class RestAPIController {
 	@Autowired
 	private ActivityService activityService;
+	@Autowired
+	private CityService cityService;
 
 	@RequestMapping(value = "activities", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<Activity>> listAllActivitiesGroupByTag() {
+	public Map<String, List<ActivityDto>> listAllActivitiesGroupByTag() {
 		return activityService.listAllActivitiesGroupByTag();
+	}
+
+	@RequestMapping(value = "cities", method = RequestMethod.GET)
+	@ResponseStatus(value = HttpStatus.OK)
+	@ResponseBody
+	public Map<String, List<CityDto>> listAllCitiesGroupByFirstLetter() {
+		return cityService.ListAllCitiesGroupByFirstLetter();
+	}
+
+	@RequestMapping(value = "destinations", method = RequestMethod.GET)
+	@ResponseStatus(value = HttpStatus.OK)
+	@ResponseBody
+	public Map<String, List<CityDto>> listAllDestinationsGroupByFirstLetter() {
+		return cityService.ListAllDesinationsGroupByFirstLetter();
 	}
 }

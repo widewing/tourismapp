@@ -9,8 +9,8 @@ import javax.persistence.Table;
 public class City extends BaseLocationEntity {
 	private String baiduCode;
 	private String Country = "中国";
-	private Boolean destinationStatus = false;
 	private String firstLetter;
+	private Boolean isDestination = false;
 	private String province;
 
 	@Override
@@ -30,14 +30,14 @@ public class City extends BaseLocationEntity {
 		return Country;
 	}
 
-	@Column(name = "is_destination", nullable = false)
-	public Boolean getDestinationStatus() {
-		return destinationStatus;
-	}
-
 	@Column(name = "first_letter", nullable = false, length = 1)
 	public String getFirstLetter() {
 		return firstLetter;
+	}
+
+	@Column(name = "is_destination", nullable = false)
+	public Boolean getIsDestination() {
+		return isDestination;
 	}
 
 	@Column(name = "province", nullable = false, length = 10)
@@ -53,12 +53,12 @@ public class City extends BaseLocationEntity {
 		Country = country;
 	}
 
-	public void setDestinationStatus(Boolean destinationStatus) {
-		this.destinationStatus = destinationStatus;
-	}
-
 	public void setFirstLetter(String firstLetter) {
 		this.firstLetter = firstLetter;
+	}
+
+	public void setIsDestination(Boolean isDestination) {
+		this.isDestination = isDestination;
 	}
 
 	public void setProvince(String province) {

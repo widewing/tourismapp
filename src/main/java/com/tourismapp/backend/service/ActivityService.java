@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tourismapp.backend.dao.ActivityDao;
+import com.tourismapp.backend.dto.ActivityDto;
 import com.tourismapp.backend.entity.Activity;
 
 @Service
@@ -18,15 +19,14 @@ public class ActivityService {
 	private ActivityDao activityDao;
 
 	@Transactional(readOnly = true)
-	public Map<String, List<Activity>> listAllActivitiesGroupByTag() {
-		Map<String, List<Activity>> result = new HashMap<String, List<Activity>>();
+	public Map<String, List<ActivityDto>> listAllActivitiesGroupByTag() {
+		Map<String, List<ActivityDto>> result = new HashMap<String, List<ActivityDto>>();
 		List<Activity> activities = activityDao.findByTodayActivities();
 		for (Activity activity : activities) {
-			List<Activity> tagActivities = result.get(activity.getTag());
-			if (null == tagActivities) {
-				tagActivities = new ArrayList<Activity>();
-			}
-			tagActivities.add(activity);
+			List<ActivityDto> tagActivities = result.get(activity.getTag());
+			if (null == tagActivities)
+				tagActivities = new ArrayList<ActivityDto>();
+			tagActivities.add(new ActivityDto(activity));
 			result.put(activity.getTag(), tagActivities);
 		}
 		return result;

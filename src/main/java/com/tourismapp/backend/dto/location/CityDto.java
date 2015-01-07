@@ -1,9 +1,20 @@
 package com.tourismapp.backend.dto.location;
 
+import org.springframework.beans.BeanUtils;
+
+import com.tourismapp.backend.entity.location.City;
 
 public class CityDto extends Location {
 	private String baiduCode;
 	private CityDto belongTo;
+
+	public CityDto() {
+		super();
+	}
+
+	public CityDto(City entity) {
+		BeanUtils.copyProperties(entity, this);
+	}
 
 	@Override
 	public boolean equals(Object e) {

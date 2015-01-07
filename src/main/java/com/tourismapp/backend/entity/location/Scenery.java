@@ -8,7 +8,6 @@ import javax.persistence.Table;
 @Table(name = "scenery")
 public class Scenery extends BaseLocationEntity {
 	private float closeTime;
-	// private Collection<SceneryEntrance> entrances;
 	private float openTime;
 	private float price;
 	private int rank;
@@ -19,9 +18,6 @@ public class Scenery extends BaseLocationEntity {
 		return closeTime;
 	}
 
-	// public Collection<SceneryEntrance> getEntrances() {
-	// return entrances;
-	// }
 	@Column(name = "open_time")
 	public float getOpenTime() {
 		return openTime;
@@ -44,10 +40,6 @@ public class Scenery extends BaseLocationEntity {
 	public void setCloseTime(float closeTime) {
 		this.closeTime = closeTime;
 	}
-
-	// public void setEntrances(Collection<SceneryEntrance> entrances) {
-	// this.entrances = entrances;
-	// }
 
 	public void setOpenTime(float openTime) {
 		this.openTime = openTime;
