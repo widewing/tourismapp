@@ -19,6 +19,7 @@ import com.tourismapp.backend.entity.Coord;
 public class BaseLocationEntity {
 	protected Coord coord;
 	protected String description;
+	private String firstLetter;
 	protected Integer id;
 	protected String imageUrl;
 	protected double latitude;
@@ -44,6 +45,11 @@ public class BaseLocationEntity {
 	@Column(name = "description", length = 255)
 	public String getDescription() {
 		return description;
+	}
+
+	@Column(name = "first_letter", nullable = false, length = 1)
+	public String getFirstLetter() {
+		return firstLetter;
 	}
 
 	@Id
@@ -93,6 +99,10 @@ public class BaseLocationEntity {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public void setFirstLetter(String firstLetter) {
+		this.firstLetter = firstLetter;
 	}
 
 	public void setId(Integer id) {

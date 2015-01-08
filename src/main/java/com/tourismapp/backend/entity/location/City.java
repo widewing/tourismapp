@@ -9,7 +9,6 @@ import javax.persistence.Table;
 public class City extends BaseLocationEntity {
 	private String baiduCode;
 	private String Country = "中国";
-	private String firstLetter;
 	private Boolean isDestination = false;
 	private String province;
 
@@ -30,11 +29,6 @@ public class City extends BaseLocationEntity {
 		return Country;
 	}
 
-	@Column(name = "first_letter", nullable = false, length = 1)
-	public String getFirstLetter() {
-		return firstLetter;
-	}
-
 	@Column(name = "is_destination", nullable = false)
 	public Boolean getIsDestination() {
 		return isDestination;
@@ -51,10 +45,6 @@ public class City extends BaseLocationEntity {
 
 	public void setCountry(String country) {
 		Country = country;
-	}
-
-	public void setFirstLetter(String firstLetter) {
-		this.firstLetter = firstLetter;
 	}
 
 	public void setIsDestination(Boolean isDestination) {
