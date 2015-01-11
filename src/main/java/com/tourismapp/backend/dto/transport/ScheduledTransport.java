@@ -8,14 +8,11 @@ import com.tourismapp.backend.dto.location.TransitStationDto;
 public class ScheduledTransport extends Transport {
 	Date arriveTime;
 	Date leaveTime;
-	protected TransitStationDto.Type stationType = TransitStationDto.Type.Other;
-
+	
 	public District getArriveDistrict() {
 		if (!(arriveLocation instanceof TransitStationDto))
 			return null;
 		TransitStationDto station = (TransitStationDto) arriveLocation;
-		if (station.getTransitType() != stationType)
-			return null;
 		if (!(station.getBelongTo() instanceof District))
 			return null;
 		return (District) station.getBelongTo();
@@ -36,8 +33,6 @@ public class ScheduledTransport extends Transport {
 		if (!(leaveLocation instanceof TransitStationDto))
 			return null;
 		TransitStationDto station = (TransitStationDto) leaveLocation;
-		if (station.getTransitType() != stationType)
-			return null;
 		if (!(station.getBelongTo() instanceof District))
 			return null;
 		return (District) station.getBelongTo();
@@ -45,10 +40,6 @@ public class ScheduledTransport extends Transport {
 
 	public Date getLeaveTime() {
 		return leaveTime;
-	}
-
-	public TransitStationDto.Type getStationType() {
-		return stationType;
 	}
 
 	public void setArriveTime(Date arriveTime) {
