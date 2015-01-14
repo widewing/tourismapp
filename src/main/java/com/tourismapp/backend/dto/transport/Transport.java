@@ -6,7 +6,7 @@ import com.tourismapp.backend.dto.location.Location;
 
 public abstract class Transport {
 	public static enum Method {
-		Air, Bicycle, Bus, Other, Ship, Subway, Taxi, Train, Walk
+		Air, Bicycle, Bus, Other, Ship, Subway, Taxi, Train, Walk, Compound
 	};
 
 	Location arriveLocation;
