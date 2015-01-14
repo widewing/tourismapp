@@ -39,21 +39,21 @@ public class RestAPIController {
 	@RequestMapping(value = "cities", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<CityDto>> listAllCitiesGroupByFirstLetter() {
+	public List<Map<String, List<CityDto>>> listAllCitiesGroupByFirstLetter() {
 		return cityService.ListAllCitiesGroupByFirstLetter();
 	}
 
 	@RequestMapping(value = "destinations", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<CityDto>> listAllDestinationsGroupByFirstLetter() {
+	public List<Map<String, List<CityDto>>> listAllDestinationsGroupByFirstLetter() {
 		return cityService.ListAllDesinationsGroupByFirstLetter();
 	}
 
 	@RequestMapping(value = "sceneries/{cityIds}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<SceneryDto>> listAllDestinationsGroupByFirstLetter(@PathVariable List<Integer> cityIds) {
+	public List<Map<String, List<SceneryDto>>> listAllDestinationsGroupByFirstLetter(@PathVariable List<Integer> cityIds) {
 		return sceneryService.ListAllByCityIdsOrderByFirstLetter(cityIds);
 	}
 }

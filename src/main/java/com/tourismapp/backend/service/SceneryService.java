@@ -18,7 +18,7 @@ public class SceneryService {
 	private SceneryDao sceneryDao;
 
 	@Transactional(readOnly = true)
-	public Map<String, List<SceneryDto>> ListAllByCityIdsOrderByFirstLetter(List<Integer> cityIds) {
+	public List<Map<String, List<SceneryDto>>> ListAllByCityIdsOrderByFirstLetter(List<Integer> cityIds) {
 		List<Scenery> sceneries = sceneryDao.findAllByCityIdsOrderByFirstLetter(cityIds);
 		return DtoUtils.sceneryDtoUtil.groupByFirstLetter(sceneries);
 
