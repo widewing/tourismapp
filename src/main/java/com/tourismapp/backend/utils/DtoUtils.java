@@ -32,7 +32,7 @@ public class DtoUtils<CDTO, CEntity> {
 	public Map<String, List<CDTO>> groupByFirstLetter(List<CEntity> entities) {
 		Map<String, List<CDTO>> result = new HashMap<String, List<CDTO>>();
 		for (CEntity entity : entities) {
-			String firstLetter = ((BaseLocationEntity) entity).getFirstLetter();
+			String firstLetter = ((BaseLocationEntity) entity).getFirstLetter().toUpperCase();
 			List<CDTO> tmpCDTOs = result.get(firstLetter);
 			if (null == tmpCDTOs) {
 				tmpCDTOs = new ArrayList<CDTO>();
@@ -55,8 +55,9 @@ public class DtoUtils<CDTO, CEntity> {
 
 	public List<CDTO> toDTO(List<CEntity> listSource) {
 		List<CDTO> result = new ArrayList<CDTO>();
-		for (CEntity entity : listSource)
+		for (CEntity entity : listSource) {
 			result.add(newDtoInstance(entity));
+		}
 
 		return result;
 	}
@@ -64,13 +65,14 @@ public class DtoUtils<CDTO, CEntity> {
 	@SuppressWarnings("unchecked")
 	public List<CEntity> toEntity(List<CDTO> listSource) {
 		List<CEntity> result = new ArrayList<CEntity>();
-		for (CDTO dto : listSource)
+		for (CDTO dto : listSource) {
 			try {
 				Method method = dto.getClass().getMethod("toEntity");
 				result.add((CEntity) method.invoke(dto));
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 			}
+		}
 		return result;
 	}
 
