@@ -29,19 +29,16 @@ public class DtoUtils<CDTO, CEntity> {
 		this.dtoClass = dtoClass;
 	}
 
-	public List<Map<String, List<CDTO>>> groupByFirstLetter(List<CEntity> entities) {
-		List<Map<String, List<CDTO>>> result = new ArrayList<Map<String, List<CDTO>>>();
-		String firstLetter = null;
-		Map<String, List<CDTO>> tmpCDTOs = null;
+	public Map<String, List<CDTO>> groupByFirstLetter(List<CEntity> entities) {
+		Map<String, List<CDTO>> result = new HashMap<String, List<CDTO>>();
 		for (CEntity entity : entities) {
-			if (!((BaseLocationEntity) entity).getFirstLetter().equalsIgnoreCase(firstLetter)) {
-				firstLetter = ((BaseLocationEntity) entity).getFirstLetter();
-				tmpCDTOs = new HashMap<String, List<CDTO>>();
-				tmpCDTOs.put(firstLetter, new ArrayList<CDTO>());
-				result.add(tmpCDTOs);
+			String firstLetter = ((BaseLocationEntity) entity).getFirstLetter();
+			List<CDTO> tmpCDTOs = result.get(firstLetter);
+			if (null == tmpCDTOs) {
+				tmpCDTOs = new ArrayList<CDTO>();
+				result.put(firstLetter, tmpCDTOs);
 			}
-			List<CDTO> tmpCities = tmpCDTOs.get(firstLetter);
-			tmpCities.add(newDtoInstance(entity));
+			tmpCDTOs.add(newDtoInstance(entity));
 		}
 		return result;
 	}

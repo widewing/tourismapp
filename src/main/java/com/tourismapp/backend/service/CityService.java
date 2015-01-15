@@ -18,13 +18,13 @@ public class CityService {
 	private CityDao cityDao;
 
 	@Transactional(readOnly = true)
-	public List<Map<String, List<CityDto>>> ListAllCitiesGroupByFirstLetter() {
+	public Map<String, List<CityDto>> ListAllCitiesGroupByFirstLetter() {
 		List<City> cities = cityDao.findAllOrderByFirstLetter();
 		return DtoUtils.cityDtoUtil.groupByFirstLetter(cities);
 	}
 
 	@Transactional(readOnly = true)
-	public List<Map<String, List<CityDto>>> ListAllDesinationsGroupByFirstLetter() {
+	public Map<String, List<CityDto>> ListAllDesinationsGroupByFirstLetter() {
 		List<City> cities = cityDao.findByDeinationCities();
 		return DtoUtils.cityDtoUtil.groupByFirstLetter(cities);
 	}
