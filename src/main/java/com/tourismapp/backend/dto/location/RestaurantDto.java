@@ -4,10 +4,10 @@ import java.util.Collection;
 
 //@Entity
 public class RestaurantDto extends Location {
-	int estimatedCost;
-	Collection<String> famousFoods;
-	int rank;
-	int style;
+	protected int estimatedCost;
+	protected Collection<String> famousFoods;
+	protected int rank;
+	protected int style;
 
 	public int getEstimatedCost() {
 		return estimatedCost;

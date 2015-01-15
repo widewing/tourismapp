@@ -3,7 +3,7 @@ package com.tourismapp.backend.entity.location;
 
 public class TransitStation extends BaseLocationEntity {
 	public static enum Type {
-		AirPort, BusStation, Other, SubwayStation, TrainStation, Wharf
+		AirPort, BusStation, Other, SubwayStation, TrainStation, Dock
 	};
 
 	Type transitType;

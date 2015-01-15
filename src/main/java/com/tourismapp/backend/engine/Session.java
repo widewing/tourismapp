@@ -35,17 +35,49 @@ import com.tourismapp.backend.service.TransportationDataService;
 public class Session {
 	Date endDate;
 	Location endLocation;
-	HotelDataService hotelData = new HotelDataService();
-	HotelDto lastNightHotel;
-	RestaurantDataService restaurantData = new RestaurantDataService();
-	List<SceneryDto> selectedSceneries;
+	Collection<SceneryDto> selectedSceneries;
 	Date startDate;
 	Location startLocation;
-	HashSet<String> tags;
-	TransportationDataService transportation = new TransportationDataService();
+	Set<String> tags;
 	float visitTimeCoefficient;
+	Collection<Restaurant> wantedRestaurants;
 
-	List<Restaurant> wantedRestaurants;
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public void setEndLocation(Location endLocation) {
+		this.endLocation = endLocation;
+	}
+
+	public void setSelectedSceneries(Collection<SceneryDto> selectedSceneries) {
+		this.selectedSceneries = selectedSceneries;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public void setStartLocation(Location startLocation) {
+		this.startLocation = startLocation;
+	}
+
+	public void setTags(Set<String> tags) {
+		this.tags = tags;
+	}
+
+	public void setVisitTimeCoefficient(float visitTimeCoefficient) {
+		this.visitTimeCoefficient = visitTimeCoefficient;
+	}
+	
+	public void setWantedRestaurants(Collection<Restaurant> wantedRestaurants) {
+		this.wantedRestaurants = wantedRestaurants;
+	}
+
+	RestaurantDataService restaurantData = new RestaurantDataService();
+	HotelDataService hotelData = new HotelDataService();
+	TransportationDataService transportation = new TransportationDataService();
+	HotelDto lastNightHotel;
 
 	private List<RouteSection> arrangeForDistrict(District district, Collection<SceneryDto> sceneries,
 			Location startLocation, Date startTime) {
@@ -206,13 +238,12 @@ public class Session {
 		return (int) ((minutes * visitTimeCoefficient + 40 * sceneries.size()) / 60);
 	}
 
-	private float calcTagsFitness(Set tags1, Set tags2) {
+	private float calcTagsFitness(Set<String> tags1, Set<String> tags2) {
 		// TODO
 		return 0;
 	}
 
-	private Collection<ScheduledTransport> getAvailableTransports(Collection<District> districts, Date startTime,
-			Date endTime) {
+	private Collection<ScheduledTransport> getAvailableTransports(Collection<District> districts, Date startTime, Date endTime) {
 		// TODO
 		return null;
 	}

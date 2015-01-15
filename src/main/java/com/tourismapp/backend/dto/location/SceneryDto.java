@@ -7,11 +7,11 @@ import org.springframework.beans.BeanUtils;
 import com.tourismapp.backend.entity.location.Scenery;
 
 public class SceneryDto extends Location {
-	private float closeTime;
-	private float openTime;
-	private float price;
-	private int rank;
-	private int visitMinutes;
+	protected float closeTime;
+	protected float openTime;
+	protected float price;
+	protected int rank;
+	protected int visitMinutes;
 
 	public SceneryDto() {
 		super();

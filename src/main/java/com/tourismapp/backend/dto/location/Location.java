@@ -1,12 +1,8 @@
 package com.tourismapp.backend.dto.location;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
-
-import javax.persistence.Column;
-
-import org.springframework.util.StringUtils;
 
 import com.tourismapp.backend.entity.Coord;
 
@@ -80,12 +76,9 @@ public class Location {
 	}
 
 	public Set<String> getTags() {
-		if (tags == null && !StringUtils.isEmpty(tagString))
-			Collections.addAll(tags, tagString.split(","));
 		return tags;
 	}
 
-	@Column(name = "tags", length = 255)
 	public String getTagString() {
 		return tagString;
 	}
@@ -130,13 +123,11 @@ public class Location {
 
 	public void setTags(HashSet<String> tags) {
 		this.tags = tags;
-		StringBuffer temp = new StringBuffer();
-		for (String string : tags)
-			temp.append(string).append(',');
-		tagString = temp.toString();
+		tagString = String.join(",",tags);
 	}
 
 	public void setTagString(String tagString) {
 		this.tagString = tagString;
+		this.tags = new HashSet<String>(Arrays.asList(tagString.split(",")));
 	}
 }

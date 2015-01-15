@@ -2,7 +2,7 @@ package com.tourismapp.backend.dto.location;
 
 public class TransitStationDto extends Location {
 	public static enum Type {BusStation,AirPort,TrainStation,SubwayStation,Wharf,Other};
-	Type transitType;
+	protected Type transitType;
 	public Type getTransitType() {
 		return transitType;
 	}

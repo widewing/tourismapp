@@ -10,9 +10,8 @@ public class HotelDto extends Location {
 		DELUXE, DOUBLE, KINGSIZE, OTHER, SINGLE, TRIPLE
 	};
 
-	Map<String, Float> prices;
-	int rank;
-	String room;
+	protected Map<String, Float> prices;
+	protected int rank;
 
 	public Map<String, Float> getPrices() {
 		return prices;
