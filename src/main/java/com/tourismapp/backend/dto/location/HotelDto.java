@@ -4,7 +4,6 @@ import java.util.Map;
 
 import javax.persistence.Entity;
 
-@Entity
 public class HotelDto extends Location {
 	public static enum RoomType {
 		DELUXE, DOUBLE, KINGSIZE, OTHER, SINGLE, TRIPLE

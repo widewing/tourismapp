@@ -2,7 +2,6 @@ package com.tourismapp.backend.dto.location;
 
 import java.util.Collection;
 
-//@Entity
 public class RestaurantDto extends Location {
 	protected int estimatedCost;
 	protected Collection<String> famousFoods;
