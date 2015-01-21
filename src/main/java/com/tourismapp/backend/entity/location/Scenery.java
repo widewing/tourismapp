@@ -10,11 +10,11 @@ import javax.persistence.Table;
 @Table(name = "scenery")
 public class Scenery extends BaseLocationEntity {
 	private City city;
-	private float closeTime;
-	private float openTime;
-	private float price;
-	private int rank;
-	private int visitMinutes;
+	private Float closeTime;
+	private Float openTime;
+	private Float price;
+	private Integer rank;
+	private Integer visitMinutes;
 
 	@ManyToOne
 	@JoinColumn(name = "city_id", nullable = false)
@@ -42,6 +42,7 @@ public class Scenery extends BaseLocationEntity {
 		return rank;
 	}
 
+	@Column(name = "visit_minutes", nullable = false)
 	public int getVisitMinutes() {
 		return visitMinutes;
 	}
