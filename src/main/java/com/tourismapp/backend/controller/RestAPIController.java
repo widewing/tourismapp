@@ -53,7 +53,7 @@ public class RestAPIController {
 	@RequestMapping(value = "sceneries/{cityIds}", method = RequestMethod.GET)
 	@ResponseStatus(value = HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<SceneryDto>> listAllDestinationsGroupByFirstLetter(@PathVariable List<Integer> cityIds) {
+	public Map<Integer, List<SceneryDto>> listAllDestinationsGroupByFirstLetter(@PathVariable List<Integer> cityIds) {
 		return sceneryService.ListAllByCityIdsOrderByFirstLetter(cityIds);
 	}
 }

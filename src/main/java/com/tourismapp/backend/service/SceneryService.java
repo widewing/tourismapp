@@ -1,5 +1,7 @@
 package com.tourismapp.backend.service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.tourismapp.backend.dao.SceneryDao;
 import com.tourismapp.backend.dto.location.SceneryDto;
 import com.tourismapp.backend.entity.location.Scenery;
-import com.tourismapp.backend.utils.DtoUtils;
 
 @Service
 public class SceneryService {
@@ -18,9 +19,18 @@ public class SceneryService {
 	private SceneryDao sceneryDao;
 
 	@Transactional(readOnly = true)
-	public Map<String, List<SceneryDto>> ListAllByCityIdsOrderByFirstLetter(List<Integer> cityIds) {
+	public Map<Integer, List<SceneryDto>> ListAllByCityIdsOrderByFirstLetter(List<Integer> cityIds) {
 		List<Scenery> sceneries = sceneryDao.findAllByCityIdsOrderByFirstLetter(cityIds);
-		return DtoUtils.sceneryDtoUtil.groupByFirstLetter(sceneries);
+		Map<Integer, List<SceneryDto>> result = new HashMap<Integer, List<SceneryDto>>();
+		for (Scenery scenery : sceneries) {
+			List<SceneryDto> tmpSceneryList = result.get(scenery.getCity().getId());
+			if (tmpSceneryList == null) {
+				tmpSceneryList = new ArrayList<SceneryDto>();
+				result.put(scenery.getCity().getId(), tmpSceneryList);
+			}
+			tmpSceneryList.add(new SceneryDto(scenery));
+		}
+		return result;
 
 	}
 
