@@ -6,7 +6,6 @@ import java.util.Set;
 import com.tourismapp.backend.entity.Coord;
 
 public class Location {
-	protected String baiduCode;
 	protected Location belongTo;
 	protected Coord coord;
 	protected String description;
@@ -17,15 +16,14 @@ public class Location {
 	protected String name;
 	protected Set<String> tags = new HashSet<String>();
 
+	public Location() {
+	}
+
 	@Override
 	public boolean equals(Object e) {
 		if (!(e instanceof Location))
 			return false;
 		return id == null ? false : id.equals(((Location) e).id);
-	}
-
-	public String getBaiduCode() {
-		return baiduCode;
 	}
 
 	public Location getBelongTo() {
@@ -75,10 +73,6 @@ public class Location {
 
 	public Set<String> getTags() {
 		return tags;
-	}
-
-	public void setBaiduCode(String baiduCode) {
-		this.baiduCode = baiduCode;
 	}
 
 	public void setBelongTo(Location belongTo) {

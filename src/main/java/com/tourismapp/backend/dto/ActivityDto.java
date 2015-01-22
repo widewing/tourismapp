@@ -8,7 +8,6 @@ import org.springframework.beans.BeanUtils;
 import com.tourismapp.backend.dto.location.CityDto;
 import com.tourismapp.backend.dto.location.SceneryDto;
 import com.tourismapp.backend.entity.Activity;
-import com.tourismapp.backend.utils.DtoUtils;
 
 public class ActivityDto {
 	private List<CityDto> cities;
@@ -26,8 +25,6 @@ public class ActivityDto {
 
 	public ActivityDto(Activity entity) {
 		BeanUtils.copyProperties(entity, this);
-		cities = DtoUtils.cityDtoUtil.toDTO(entity.getCities());
-		sceneries = DtoUtils.sceneryDtoUtil.toDTO(entity.getSceneries());
 	}
 
 	public List<CityDto> getCities() {
