@@ -1,6 +1,5 @@
 package com.tourismapp.backend.dto.location;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,11 +12,10 @@ public class Location {
 	protected String description;
 	protected Integer id;
 	protected String imageUrl;
-	protected double latitude;
-	protected double longitude;
+	protected Double latitude;
+	protected Double longitude;
 	protected String name;
 	protected Set<String> tags = new HashSet<String>();
-	protected String tagString;
 
 	@Override
 	public boolean equals(Object e) {
@@ -63,11 +61,11 @@ public class Location {
 		return imageUrl;
 	}
 
-	public double getLatitude() {
+	public Double getLatitude() {
 		return latitude;
 	}
 
-	public double getLongitude() {
+	public Double getLongitude() {
 		return longitude;
 	}
 
@@ -77,10 +75,6 @@ public class Location {
 
 	public Set<String> getTags() {
 		return tags;
-	}
-
-	public String getTagString() {
-		return tagString;
 	}
 
 	public void setBaiduCode(String baiduCode) {
@@ -109,11 +103,11 @@ public class Location {
 		this.imageUrl = imageUrl;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(Double latitude) {
 		this.latitude = latitude;
 	}
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(Double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -121,13 +115,7 @@ public class Location {
 		this.name = name;
 	}
 
-	public void setTags(HashSet<String> tags) {
+	public void setTags(Set<String> tags) {
 		this.tags = tags;
-		tagString = String.join(",",tags);
-	}
-
-	public void setTagString(String tagString) {
-		this.tagString = tagString;
-		this.tags = new HashSet<String>(Arrays.asList(tagString.split(",")));
 	}
 }

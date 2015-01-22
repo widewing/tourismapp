@@ -23,27 +23,27 @@ public class Scenery extends BaseLocationEntity {
 	}
 
 	@Column(name = "close_time")
-	public float getCloseTime() {
+	public Float getCloseTime() {
 		return closeTime;
 	}
 
 	@Column(name = "open_time")
-	public float getOpenTime() {
+	public Float getOpenTime() {
 		return openTime;
 	}
 
 	@Column(name = "price")
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
 	@Column(name = "rank")
-	public int getRank() {
+	public Integer getRank() {
 		return rank;
 	}
 
 	@Column(name = "visit_minutes", nullable = false)
-	public int getVisitMinutes() {
+	public Integer getVisitMinutes() {
 		return visitMinutes;
 	}
 
@@ -51,23 +51,23 @@ public class Scenery extends BaseLocationEntity {
 		this.city = city;
 	}
 
-	public void setCloseTime(float closeTime) {
+	public void setCloseTime(Float closeTime) {
 		this.closeTime = closeTime;
 	}
 
-	public void setOpenTime(float openTime) {
+	public void setOpenTime(Float openTime) {
 		this.openTime = openTime;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
-	public void setRank(int rank) {
+	public void setRank(Integer rank) {
 		this.rank = rank;
 	}
 
-	public void setVisitMinutes(int visitMinutes) {
+	public void setVisitMinutes(Integer visitMinutes) {
 		this.visitMinutes = visitMinutes;
 	}
 

@@ -133,6 +133,10 @@ public class BaseLocationEntity {
 		tagString = temp.toString();
 	}
 
+	public void setTags(Set<String> tags) {
+		this.tags = tags;
+	}
+
 	public void setTagString(String tagString) {
 		this.tagString = tagString;
 	}

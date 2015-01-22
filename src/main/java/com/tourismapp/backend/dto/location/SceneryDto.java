@@ -7,11 +7,11 @@ import org.springframework.beans.BeanUtils;
 import com.tourismapp.backend.entity.location.Scenery;
 
 public class SceneryDto extends Location {
-	protected float closeTime;
-	protected float openTime;
-	protected float price;
-	protected int rank;
-	protected int visitMinutes;
+	protected Float closeTime;
+	protected Float openTime;
+	protected Float price;
+	protected Integer rank;
+	protected Integer visitMinutes;
 
 	public SceneryDto() {
 		super();
@@ -21,7 +21,7 @@ public class SceneryDto extends Location {
 		BeanUtils.copyProperties(entity, this);
 	}
 
-	public float getCloseTime() {
+	public Float getCloseTime() {
 		return closeTime;
 	}
 
@@ -29,39 +29,39 @@ public class SceneryDto extends Location {
 		return null;
 	}
 
-	public float getOpenTime() {
+	public Float getOpenTime() {
 		return openTime;
 	}
 
-	public float getPrice() {
+	public Float getPrice() {
 		return price;
 	}
 
-	public int getRank() {
+	public Integer getRank() {
 		return rank;
 	}
 
-	public int getVisitMinutes() {
+	public Integer getVisitMinutes() {
 		return visitMinutes;
 	}
 
-	public void setCloseTime(float closeTime) {
+	public void setCloseTime(Float closeTime) {
 		this.closeTime = closeTime;
 	}
 
-	public void setOpenTime(float openTime) {
+	public void setOpenTime(Float openTime) {
 		this.openTime = openTime;
 	}
 
-	public void setPrice(float price) {
+	public void setPrice(Float price) {
 		this.price = price;
 	}
 
-	public void setRank(int rank) {
+	public void setRank(Integer rank) {
 		this.rank = rank;
 	}
 
-	public void setVisitMinutes(int visitMinutes) {
+	public void setVisitMinutes(Integer visitMinutes) {
 		this.visitMinutes = visitMinutes;
 	}
 
