@@ -55,24 +55,21 @@ public class DtoUtils<CDTO, CEntity> {
 
 	public List<CDTO> toDTO(List<CEntity> listSource) {
 		List<CDTO> result = new ArrayList<CDTO>();
-		for (CEntity entity : listSource) {
+		for (CEntity entity : listSource)
 			result.add(newDtoInstance(entity));
-		}
-
 		return result;
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<CEntity> toEntity(List<CDTO> listSource) {
 		List<CEntity> result = new ArrayList<CEntity>();
-		for (CDTO dto : listSource) {
+		for (CDTO dto : listSource)
 			try {
 				Method method = dto.getClass().getMethod("toEntity");
 				result.add((CEntity) method.invoke(dto));
 			} catch (Exception e) {
 				logger.error(e.getMessage(), e);
 			}
-		}
 		return result;
 	}
 
