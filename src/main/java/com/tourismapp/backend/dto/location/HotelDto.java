@@ -2,17 +2,15 @@ package com.tourismapp.backend.dto.location;
 
 import java.util.Map;
 
-import javax.persistence.Entity;
-
 public class HotelDto extends Location {
 	public static enum RoomType {
 		DELUXE, DOUBLE, KINGSIZE, OTHER, SINGLE, TRIPLE
 	};
 
-	protected Map<String, Float> prices;
+	protected Map<RoomType, Float> prices;
 	protected int rank;
 
-	public Map<String, Float> getPrices() {
+	public Map<RoomType, Float> getPrices() {
 		return prices;
 	}
 
@@ -20,7 +18,7 @@ public class HotelDto extends Location {
 		return rank;
 	}
 
-	public void setPrices(Map<String, Float> prices) {
+	public void setPrices(Map<RoomType, Float> prices) {
 		this.prices = prices;
 	}
 
