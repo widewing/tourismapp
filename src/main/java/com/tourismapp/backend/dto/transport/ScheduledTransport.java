@@ -5,7 +5,7 @@ import java.util.Date;
 import com.tourismapp.backend.dto.location.District;
 import com.tourismapp.backend.dto.location.TransitStationDto;
 
-public class ScheduledTransport extends Transport {
+public class ScheduledTransport extends TransportBase {
 	Date arriveTime;
 	Date leaveTime;
 	

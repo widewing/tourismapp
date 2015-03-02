@@ -3,30 +3,30 @@ package com.tourismapp.backend.dto.route;
 import java.util.Date;
 
 import com.tourismapp.backend.dto.transport.ScheduledTransport;
-import com.tourismapp.backend.dto.transport.Transport;
+import com.tourismapp.backend.dto.transport.TransportBase;
 
 public class TransportSection extends RouteSection {
-	Transport transport;
+	TransportBase transportBase;
 
 	public TransportSection(ScheduledTransport transport) {
 		super(transport.getLeaveTime(), transport.getArriveTime(), transport.getLeaveLocation(), transport
 				.getArriveLocation(), transport.getPrice());
-		this.transport = transport;
+		this.transportBase = transport;
 		startLocation = transport.getLeaveLocation();
 		endLocation = transport.getArriveLocation();
 	}
 
-	public TransportSection(Transport transport, Date startTime, Date endTime) {
-		super(startTime, endTime, transport.getLeaveLocation(), transport.getArriveLocation(), transport.getPrice());
-		this.transport = transport;
+	public TransportSection(TransportBase transportBase, Date startTime, Date endTime) {
+		super(startTime, endTime, transportBase.getLeaveLocation(), transportBase.getArriveLocation(), transportBase.getPrice());
+		this.transportBase = transportBase;
 	}
 
-	public Transport getTransport() {
-		return transport;
+	public TransportBase getTransport() {
+		return transportBase;
 	}
 
-	public void setTransport(Transport transport) {
-		this.transport = transport;
+	public void setTransport(TransportBase transportBase) {
+		this.transportBase = transportBase;
 	}
 
 }

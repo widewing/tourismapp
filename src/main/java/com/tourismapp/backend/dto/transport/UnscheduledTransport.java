@@ -3,7 +3,7 @@ package com.tourismapp.backend.dto.transport;
 import java.util.Calendar;
 import java.util.Date;
 
-public class UnscheduledTransport extends Transport {
+public class UnscheduledTransport extends TransportBase {
 	@Override
 	public Date getArriveTime(Date leaveTime) {
 		Calendar cal = Calendar.getInstance();

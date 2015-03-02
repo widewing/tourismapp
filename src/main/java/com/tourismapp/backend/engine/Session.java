@@ -23,7 +23,7 @@ import com.tourismapp.backend.dto.route.RouteSection;
 import com.tourismapp.backend.dto.route.StaySection;
 import com.tourismapp.backend.dto.route.TransportSection;
 import com.tourismapp.backend.dto.transport.ScheduledTransport;
-import com.tourismapp.backend.dto.transport.Transport;
+import com.tourismapp.backend.dto.transport.TransportBase;
 import com.tourismapp.backend.entity.Coord;
 import com.tourismapp.backend.entity.location.Hotel;
 import com.tourismapp.backend.entity.location.Restaurant;
@@ -136,16 +136,16 @@ public class Session {
 
 	//安排市内交通
 	private List<TransportSection> arrangeInnerCityTransport(Location leaveLoc, Location arriveLoc, Date leaveTime) {
-		Collection<Transport> availableTransports = transportation.getAvailableTransports(leaveTime, leaveLoc,
-				arriveLoc, new Transport.Method[] { Transport.Method.Bus, Transport.Method.Taxi });
+		Collection<TransportBase> availableTransports = transportation.getAvailableTransports(leaveTime, leaveLoc,
+				arriveLoc, new TransportBase.Method[] { TransportBase.Method.Bus, TransportBase.Method.Taxi });
 		return selectTransport(leaveLoc, arriveLoc, leaveTime, availableTransports);
 	}
 
 	//安排城际交通
 	private List<TransportSection> arrangeInterCityTransport(Location leaveLoc, District arriveLoc, Date leaveTime) {
-		Collection<Transport> availableTransports = transportation.getAvailableTransports(leaveTime, leaveLoc,
+		Collection<TransportBase> availableTransports = transportation.getAvailableTransports(leaveTime, leaveLoc,
 				arriveLoc,
-				new Transport.Method[] { Transport.Method.Air, Transport.Method.Train, Transport.Method.Bus });
+				new TransportBase.Method[] { TransportBase.Method.Air, TransportBase.Method.Train, TransportBase.Method.Bus });
 		return selectTransport(leaveLoc, arriveLoc, leaveTime, availableTransports);
 	}
 
@@ -334,15 +334,15 @@ public class Session {
 
 	//选择最合适的交通方式
 	private List<TransportSection> selectTransport(Location leaveLoc, Location arriveLoc, Date leaveTime,
-			Collection<Transport> availableTransports) {
-		Transport bestTransport = null;
+			Collection<TransportBase> availableTransports) {
+		TransportBase bestTransport = null;
 		Date bestTransportArriveTime = null;
-		for (Transport transport : availableTransports) {
-			Date arriveTime = transport.getArriveTime(leaveTime);
+		for (TransportBase transportBase : availableTransports) {
+			Date arriveTime = transportBase.getArriveTime(leaveTime);
 			if (arriveTime == null)
 				continue;
 			if (bestTransport == null || arriveTime.before(bestTransportArriveTime)) {
-				bestTransport = transport;
+				bestTransport = transportBase;
 				bestTransportArriveTime = arriveTime;
 			}
 		}

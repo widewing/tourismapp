@@ -4,7 +4,7 @@ import java.util.Date;
 
 import com.tourismapp.backend.dto.location.Location;
 
-public abstract class Transport {
+public abstract class TransportBase {
 	public static enum Method {
 		Air, Bicycle, Bus, Other, Ship, Subway, Taxi, Train, Walk, Compound
 	};
