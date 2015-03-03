@@ -2,6 +2,7 @@ package com.tourismapp.backend.dto.route;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tourismapp.backend.dto.location.Location;
 
 public class RouteSection {
@@ -25,6 +26,7 @@ public class RouteSection {
 		return endLocation;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	public Date getEndTime() {
 		return endTime;
 	}
@@ -41,6 +43,7 @@ public class RouteSection {
 		return startLocation;
 	}
 
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	public Date getStartTime() {
 		return startTime;
 	}

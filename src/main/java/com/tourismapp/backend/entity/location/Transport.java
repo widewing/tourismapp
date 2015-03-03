@@ -8,11 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "transportBase")
+@Table(name = "transport")
 public class Transport {
 
 	private Date endTime;
@@ -28,8 +28,8 @@ public class Transport {
 		return endTime;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "end_transitst_id", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "end_transitst_station_id", nullable = false)
 	public TransitStation getEndTransitStation() {
 		return endTransitStation;
 	}
@@ -46,8 +46,8 @@ public class Transport {
 		return startTime;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "start_transitst_id", nullable = false)
+	@OneToOne
+	@JoinColumn(name = "start_transitst_station_id", nullable = false)
 	public TransitStation getStartTransitStation() {
 		return startTransitStation;
 	}

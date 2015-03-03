@@ -1,9 +1,13 @@
 package com.tourismapp.backend.entity.location;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "transport_station")
 public class TransitStation extends BaseLocationEntity {
 	public static enum Type {
-		AirPort, BusStation, Other, SubwayStation, TrainStation, Dock
+		AirPort, BusStation, Dock, Other, SubwayStation, TrainStation
 	};
 
 	Type transitType;
